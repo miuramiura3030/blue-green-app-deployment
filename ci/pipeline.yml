@@ -4,6 +4,7 @@ groups:
   - unit-tests
   - deploy-app
   - promote-new-version
+  #test
 
 resources:
 - name: blue-green-app-deployment
