@@ -63,11 +63,11 @@ How to setup this sample pipeline on your Concourse server:
   * Edit _ci/credentials.yml_ and fill out all the required credentials:  
 _deploy-username:_ the CF CLI userID to deploy apps on the Cloud Foundry deployment  
 _deploy-password:_ the corresponding password to deploy apps on the Cloud Foundry deployment  
-_pws-organization:_ the ID of your targeted organization in Cloud Foundry   
-_pws-space:_ the name of your targeted space in Cloud Foundry (e.g. development)  
-_pws-api:_ the url of the CF API. (e.g. https://api.run.pivotal.io)  
-_pws-app-suffix:_ the domain suffix to append to the application hostname (e.g. my-test-app)  
-_pws-app-domain:_ the domain name used for your CF apps (e.g. cfapps.io)   
+_pas-organization:_ the ID of your targeted organization in Cloud Foundry   
+_pas-space:_ the name of your targeted space in Cloud Foundry (e.g. development)  
+_pas-api:_ the url of the CF API. (e.g. https://api.run.pivotal.io)  
+_pas-app-suffix:_ the domain suffix to append to the application hostname (e.g. my-test-app)  
+_pas-app-domain:_ the domain name used for your CF apps (e.g. cfapps.io)   
 
 3. Configure the sample pipeline in Concourse with the following commands:  
    __fly -t local login <concourse-url>__  

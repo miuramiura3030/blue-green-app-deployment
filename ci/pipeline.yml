@@ -12,15 +12,15 @@ resources:
   source:
     branch: master
     uri: https://github.com/pivotalservices/concourse-pipeline-samples.git
-- name: PWS
+- name: PAS
   type: cf
   source:
-    api: {{pws-api}}
-    organization: {{pws-organization}}
+    api: {{pas-api}}
+    organization: {{pas-organization}}
     username: {{deploy-username}}
     password: {{deploy-password}}
     skip_cert_check: true
-    space: {{pws-space}}
+    space: {{pas-space}}
 
 jobs:
 - name: unit-tests
@@ -43,17 +43,17 @@ jobs:
   - task: get-current-app-color
     file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:
-      PWS_APP_SUFFIX: {{pws-app-suffix}}
-      PWS_API: {{pws-api}}
-      PWS_ORG: {{pws-organization}}
-      PWS_USER: {{deploy-username}}
-      PWS_PWD: {{deploy-password}}
-      PWS_SPACE: {{pws-space}}
+      PAS_APP_SUFFIX: {{pas-app-suffix}}
+      PAS_API: {{pas-api}}
+      PAS_ORG: {{pas-organization}}
+      PAS_USER: {{deploy-username}}
+      PAS_PWD: {{deploy-password}}
+      PAS_SPACE: {{pas-space}}
   - task: prepare-app-manifest
     file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/app-manifest-prep.yml
     params:
-      PWS_APP_SUFFIX: {{pws-app-suffix}}
-  - put: PWS
+      PAS_APP_SUFFIX: {{pas-app-suffix}}
+  - put: PAS
     params:
       manifest: app-manifest-output/manifest.yml
       path: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/bgd-app
@@ -69,19 +69,19 @@ jobs:
   - task: get-current-app-color
     file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:
-      PWS_APP_SUFFIX: {{pws-app-suffix}}
-      PWS_API: {{pws-api}}
-      PWS_ORG: {{pws-organization}}
-      PWS_USER: {{deploy-username}}
-      PWS_PWD: {{deploy-password}}
-      PWS_SPACE: {{pws-space}}
+      PAS_APP_SUFFIX: {{pas-app-suffix}}
+      PAS_API: {{pas-api}}
+      PAS_ORG: {{pas-organization}}
+      PAS_USER: {{deploy-username}}
+      PAS_PWD: {{deploy-password}}
+      PAS_SPACE: {{pas-space}}
   - task: switch-app-routes
     file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/update-routes.yml
     params:
-      PWS_APP_SUFFIX: {{pws-app-suffix}}
-      PWS_APP_DOMAIN: {{pws-app-domain}}
-      PWS_API: {{pws-api}}
-      PWS_ORG: {{pws-organization}}
-      PWS_USER: {{deploy-username}}
-      PWS_PWD: {{deploy-password}}
-      PWS_SPACE: {{pws-space}}
+      PAS_APP_SUFFIX: {{pas-app-suffix}}
+      PAS_APP_DOMAIN: {{pas-app-domain}}
+      PAS_API: {{pas-api}}
+      PAS_ORG: {{pas-organization}}
+      PAS_USER: {{deploy-username}}
+      PAS_PWD: {{deploy-password}}
+      PAS_SPACE: {{pas-space}}
