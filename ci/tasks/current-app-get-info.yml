@@ -8,7 +8,7 @@ image_resource:
     tag: "latest"
 
 inputs:
-- name: concourse-pipeline-samples
+- name: blue-green-app-deployment
 
 outputs:
 - name: current-app-info

@@ -9,7 +9,7 @@ image_resource:
 
 
 inputs:
-- name: concourse-pipeline-samples
+- name: blue-green-app-deployment
 - name: current-app-info
 
 run:

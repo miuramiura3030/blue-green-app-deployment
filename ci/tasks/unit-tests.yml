@@ -8,7 +8,7 @@ image_resource:
     tag: "latest"
 
 inputs:
-- name: concourse-pipeline-samples
+- name: blue-green-app-deployment
 
 run:
   path: blue-green-app-deployment/ci/tasks/run-unit-tests
