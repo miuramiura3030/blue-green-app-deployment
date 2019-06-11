@@ -3,7 +3,6 @@ groups:
   jobs:
   - unit-tests
   - deploy-app
-  # - load-tests
   - promote-new-version
 
 resources:
