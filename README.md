@@ -1,4 +1,4 @@
-![Main application screenshot](https://raw.githubusercontent.com/pivotalservices/concourse-pipeline-samples/master/common/images/bg-pipeline-icon.jpg)
+![Main application screenshot](/bgd-app/images/bg.png)
 
 # Blue-Green application deployment with Concourse
 
