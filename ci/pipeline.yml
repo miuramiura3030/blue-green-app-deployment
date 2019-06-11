@@ -7,11 +7,11 @@ groups:
   - promote-new-version
 
 resources:
-- name: concourse-pipeline-samples
+- name: blue-green-app-deployment
   type: git
   source:
     branch: master
-    uri: https://github.com/pivotalservices/concourse-pipeline-samples.git
+    uri: https://github.com/mhtike/blue-green-app-deployment.git
 - name: PAS
   type: cf
   source:
@@ -27,21 +27,21 @@ jobs:
   serial: true
   public: true
   plan:
-  - get: concourse-pipeline-samples
+  - get: blue-green-app-deployment
     trigger: true
   - task: run-unit-tests
-    file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/unit-tests.yml
+    file: blue-green-app-deployment/ci/tasks/unit-tests.yml
 
 - name: deploy-app
   serial: true
   public: true
   plan:
-  - get: concourse-pipeline-samples
+  - get: blue-green-app-deployment
     trigger: true
     passed:
       - unit-tests
   - task: get-current-app-color
-    file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/current-app-get-info.yml
+    file: blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:
       PAS_APP_SUFFIX: {{pas-app-suffix}}
       PAS_API: {{pas-api}}
@@ -50,24 +50,24 @@ jobs:
       PAS_PWD: {{deploy-password}}
       PAS_SPACE: {{pas-space}}
   - task: prepare-app-manifest
-    file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/app-manifest-prep.yml
+    file: blue-green-app-deployment/ci/tasks/app-manifest-prep.yml
     params:
       PAS_APP_SUFFIX: {{pas-app-suffix}}
   - put: PAS
     params:
       manifest: app-manifest-output/manifest.yml
-      path: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/bgd-app
+      path: blue-green-app-deployment/bgd-app
 
 - name: promote-new-version
   serial: true
   public: true
   plan:
-  - get: concourse-pipeline-samples
+  - get: blue-green-app-deployment
     trigger: true
-    # passed:
-    #   - load-tests
+    passed:
+      - deploy-app
   - task: get-current-app-color
-    file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/current-app-get-info.yml
+    file: blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:
       PAS_APP_SUFFIX: {{pas-app-suffix}}
       PAS_API: {{pas-api}}
@@ -76,7 +76,7 @@ jobs:
       PAS_PWD: {{deploy-password}}
       PAS_SPACE: {{pas-space}}
   - task: switch-app-routes
-    file: concourse-pipeline-samples/pipelines/appdev/blue-green-app-deployment/ci/tasks/update-routes.yml
+    file: blue-green-app-deployment/ci/tasks/update-routes.yml
     params:
       PAS_APP_SUFFIX: {{pas-app-suffix}}
       PAS_APP_DOMAIN: {{pas-app-domain}}

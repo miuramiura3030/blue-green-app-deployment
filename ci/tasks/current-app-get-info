@@ -5,9 +5,9 @@ set -xe
 pwd
 env
 
-cf api $PAS_API --skip-ssl-validation
+cf api "$PAS_API" --skip-ssl-validation
 
-cf login -u $PAS_USER -p $PAS_PWD -o "$PAS_ORG" -s "$PAS_SPACE"
+cf login -u "$PAS_USER" -p "$PAS_PWD" -o "$PAS_ORG" -s "$PAS_SPACE"
 
 cf apps
 
