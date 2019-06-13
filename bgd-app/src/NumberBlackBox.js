@@ -20,4 +20,3 @@ NumberBlackBox.prototype.subtract = function(delta) {
 };
 
 module.exports = NumberBlackBox;
-//asdfasfsdfasdfadsfdasfadsfadsfadsfadsfdasfasdfadsfas
