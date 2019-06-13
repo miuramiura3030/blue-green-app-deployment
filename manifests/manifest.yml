@@ -2,5 +2,5 @@
 applications:
 - name: APPNAME
   command: node index.js
-  buildpack: https://github.com/mhtike/nodejs-buildpack.git
+  buildpack: https://github.com/miuramiura3030/nodejs-buildpack.git
   instances: 1

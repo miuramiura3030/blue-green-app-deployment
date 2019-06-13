@@ -11,7 +11,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/mhtike/blue-green-app-deployment.git
+    uri: https://github.com/miuramiura3030/blue-green-app-deployment.git
 - name: PAS
   type: cf
   source:
@@ -39,7 +39,7 @@ jobs:
   - get: blue-green-app-deployment
     trigger: true
     passed:
-      - unit-tests
+      - unit-tests #が終わっていたら、次の処理
   - task: get-current-app-color
     file: blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:

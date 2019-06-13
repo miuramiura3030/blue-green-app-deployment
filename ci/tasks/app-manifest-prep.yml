@@ -4,7 +4,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: pivotalservices/docker-concourse-cf-tools
+    repository: pivotalservices/docker-concourse-cf-tools #これをブラウザで検索
     tag: "latest"
 
 inputs:

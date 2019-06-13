@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhtike/blue-green-app-deployment.git"
+    "url": "git+https://github.com/miuramiura3030/blue-green-app-deployment.git"
   },
   "keywords": [
     "concourse",
@@ -17,9 +17,9 @@
   "author": "Luciano Silva",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mhtike/blue-green-app-deployment.git/issues"
+    "url": "https://github.com/miuramiura3030/blue-green-app-deployment.git/issues"
   },
-  "homepage": "https://github.com/mhtike/blue-green-app-deployment.git#readme",
+  "homepage": "https://github.com/miuramiura3030/blue-green-app-deployment.git#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
     "chai": "^3.5.0",
